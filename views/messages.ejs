@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Messages</title>
+</head>
+<body>
+    <% messages.forEach(message => { %>
+        <div>
+            <h2><%= message.user %></h2>
+            <p><%= message.text %></p>
+            <p><em><%= message.added %></em></p>
+        </div>
+    <% }) %>
+</body>
+</html>

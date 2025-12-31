@@ -2,16 +2,19 @@ const express = require("express");
 const app = express();
 const PORT = 3000;
 
+// import routes
+const indexRouter = require("./routes/indexRouter");
+const messageRouter = require("./routes/messageRouter");
+
+// Use routes
+app.use("/", indexRouter);
+app.use("/messages", messageRouter);
+
 // Set EJS as the view engine
 app.set("view engine", "ejs");
 
 // Serve static files 
 app.use(express.static("public"));
-
-// Index route
-app.get("/", (req, res) => {
-  res.render("index", { title: "Mini message board" });
-});
 
 // Start server
 app.listen(PORT, () => {
