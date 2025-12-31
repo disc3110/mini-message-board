@@ -2,6 +2,14 @@ const express = require("express");
 const app = express();
 const PORT = 3000;
 
+// Set up
+
+app.set("view engine", "ejs"); // Set EJS as the view engine
+app.use(express.urlencoded({ extended: true })); // middleware to parse URL-encoded bodies
+app.use(express.static("public"));  // Serve static files 
+
+
+
 // import routes
 const indexRouter = require("./routes/indexRouter");
 const messageRouter = require("./routes/messageRouter");
@@ -10,11 +18,6 @@ const messageRouter = require("./routes/messageRouter");
 app.use("/", indexRouter);
 app.use("/messages", messageRouter);
 
-// Set EJS as the view engine
-app.set("view engine", "ejs");
-
-// Serve static files 
-app.use(express.static("public"));
 
 // Start server
 app.listen(PORT, () => {

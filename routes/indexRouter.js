@@ -3,9 +3,7 @@ const indexRouter = Router();
 
 // Home page
 indexRouter.get("/", (req, res) => {
-  res.render("index", {
-    title: "Mini message board",
-  });
+  res.redirect("/messages");
 });
 
 

@@ -17,15 +17,24 @@ const messages = [
 
 // Routes for message board
 messageRouter.get("/", (req, res) => {
-  res.render("messages", {
+  res.render("message/messages", {
     messages: messages
   });
 });
 
 messageRouter.get("/new", (req, res) => {
-  res.render("newMessage", {
-    title: "Messages",
+  res.render("message/newMessage", {
   });
+});
+
+messageRouter.post("/new", (req, res) => {
+  const newMessage = {
+    text: req.body.message,
+    user: req.body.username,
+    added: new Date()
+  };
+  messages.push(newMessage);
+  res.redirect("/messages");
 });
 
 
